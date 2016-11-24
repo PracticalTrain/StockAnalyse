@@ -22,3 +22,11 @@ class BBSItem(scrapy.Item):
 
 class PositionItem(scrapy.Item):
     result_json_str = scrapy.Field()
+
+
+class NewsItem(scrapy.Item):
+    title = scrapy.Field()
+    pub_time = scrapy.Field()
+    source = scrapy.Field()
+    abstract = scrapy.Field()
+    content = scrapy.Field()

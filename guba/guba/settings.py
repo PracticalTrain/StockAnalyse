@@ -107,11 +107,11 @@ DEFAULT_REQUEST_HEADERS = {
 #
 # CRAWLERA_PRESERVE_DELAY = True
 #
-DOWNLOADER_MIDDLEWARES = {
-    'guba.middlewares.ProxyMiddleware': 543,
-    'guba.middlewares.RandomUserAgent': 600,
+# DOWNLOADER_MIDDLEWARES = {
+    # 'guba.middlewares.ProxyMiddleware': 543,
+    # 'guba.middlewares.RandomUserAgent': 600,
 #   'scrapy_crawlera.CrawleraMiddleware': 600
-}
+# }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -123,7 +123,8 @@ DOWNLOADER_MIDDLEWARES = {
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'guba.pipelines.GubaPipeline': 300,
-    'guba.pipelines.LagouPipeline': 300
+    'guba.pipelines.LagouPipeline': 300,
+    'guba.pipelines.GubaYaowenPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

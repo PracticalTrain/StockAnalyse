@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>要闻</title>
+	<link href="{% static 'news/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+	<link href="{% static 'news/css/style.css' %}" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Blogname Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" 
+	/>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!----webfonts
+		<link href='http://fonts.useso.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+
+        <script src="http://ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        ---->
+
+<script type="text/javascript" src="{% static 'news/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'news/js/easing.js' %}"></script>
+<!--/script-->
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+<!---->
+
+</head>
+<body>
+<!---strat-banner---->
+<div class="banner">				
+	 <div class="header">  
+		  <div class="container">
+
+			  <div class="logo">
+					<div><p>今日要闻</p></div>
+			 </div>
+			 <!---start-top-nav---->
+			 <div class="top-menu">
+				  <span class="menu"> </span>
+				   <ul>
+						<li class="active"><a href="index.html">主页</a></li>
+						<li><a href="contact.html">联系我们</a></li>
+						<li><a href="terms.html">TERMS</a></li>
+				   </ul>
+			 </div>
+			 <div class="clearfix"></div>
+					<script>
+					$("span.menu").click(function(){
+					$(".top-menu ul").slideToggle("slow" , function(){
+					});
+					});
+					</script>
+				<!---//End-top-nav---->					
+		 </div>
+	 </div>
+</div>
+<!---//End-banner---->
+<div class="content">
+	 <div class="container">
+		 <div class="content-grids">
+			 <div class="col-md-8 content-main">
+                 {% if news_list %}
+                     {% for news in news_list %}
+                         <div class="content-grid-sec">
+					    <div class="content-sec-info">
+							 <h3><a href="{% url 'news:detail' news.id %}">{{ news.title }}</a></h3>
+							 <h4>{{ news.pub_time }}, 来源 : {{ news.source }}</h4>
+							 <p>{{ news.abstract }}</p>
+							 <!-- -
+							 <a class="bttn" href="{% url 'news:detail' news.id %}">更多</a>
+							 --->
+					 </div>
+				 </div>
+                     {% endfor %}
+                 {% else %}
+                    <p>哎呦喂，啥都没有</p>
+                 {% endif %}
+				 <div class="pages">
+					 <ul>
+						 <li class="active"><a href="#">1</a></li>
+						 <li><a href="#">2</a></li>
+						 <li><a href="#">3</a></li>
+						 <li><a href="#">4</a></li>
+						 <li><a href="#">5</a></li>
+						 <li><a href="#">6</a></li>
+						 <li><a href="#">Previous</a></li>
+						 <li><a href="#">Next</a></li>
+					 </ul>
+				 </div>				 
+			 </div>
+			 
+			 <div class="col-md-4 content-main-right">
+				 <div class="search">
+						 <h3>搜索</h3>
+						<form>
+							<input type="text" value="" onFocus="this.value=''" onBlur="this.value=''">
+							<input type="submit" value="">
+						</form>
+				 </div>
+			 </div>
+			 <div class="clearfix"></div>
+		 </div>
+	 </div>
+</div>
+<!---->
+<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+</body>
+</html>

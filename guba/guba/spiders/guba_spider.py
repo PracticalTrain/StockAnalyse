@@ -3,8 +3,8 @@ __author__ = 'jjzhu'
 
 import scrapy
 from scrapy.spiders import Spider, BaseSpider
-from ..items import BBSItem
-
+from ..items import BBSItem, NewsItem
+import time
 
 class GubaSpider(Spider):
     name = 'guba'
@@ -39,6 +39,54 @@ class GubaSpider(Spider):
         item['title'] = title
         item['time_way'] = time_way
         item['owner'] = owner
+        yield item
+
+    def parse_company_detail(self, response):
+        raise NotImplementedError()
+
+
+class GubaYaowenSpider(Spider):
+    name = 'gubayaowen'
+    allowed_domains = ['guba.eastmoney.com', 'finance.eastmoney.com']
+    root_domain = 'http://guba.eastmoney.com'
+    start_urls = [
+        "http://finance.eastmoney.com/yaowen.html",
+    ]
+    done_urls = set()
+    pipelines = ['GubaYaowenPipeline']
+
+    def parse(self, response):
+        artitile_list = response.xpath('//div[@id="artitileList1"]/ul/li[contains(@id, "newsTr")]')
+        urls = []
+        for artitile in artitile_list:
+            href = artitile.xpath('div/p/a/@href').extract()
+            if len(href) == 0:
+                continue
+            urls.append(href[0])
+            for url in urls:
+                if url in self.done_urls:
+                    print '%s has been parsed' % url
+                    continue
+                self.done_urls.add(url)
+                yield scrapy.Request(url, self.parse_news)
+
+        for url in self.start_urls:
+            yield scrapy.Request(url, self.parse, dont_filter=True)
+
+    def parse_news(self, response):
+        news_content = response.xpath("//div[@class='newsContent']")
+        title = news_content.xpath('h1/text()').extract()[0]
+        time_source = news_content.xpath('div[@class="Info"]/div[@class="time-source"]')
+        pub_time = time_source.xpath('div[@class="time"]/text()').extract()[0]
+        source = time_source.xpath('div[@class="source"]/img/@alt').extract()[0]
+        abstract = news_content.xpath("div[@id='ContentBody']/div[@class='b-review']/text()").extract()[0]
+        content = news_content.xpath("div[@id='ContentBody']").extract()[0]
+        item = NewsItem()
+        item['title'] = title
+        item['pub_time'] = pub_time
+        item['source'] = source
+        item['abstract'] = abstract
+        item['content'] = content
         yield item
 
     def parse_company_detail(self, response):

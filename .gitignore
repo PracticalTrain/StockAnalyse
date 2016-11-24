@@ -1,5 +1,4 @@
 .idea
-*/migrations/*
-
-templates/
+*.pyc
 tutorial/
+*/migrations/*
