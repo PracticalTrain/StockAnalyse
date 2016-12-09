@@ -16,7 +16,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'PracticalTraining.settings'
 django.setup()
 
 COOKIES_ENABLED = False  # 禁用cookies
-DOWNLOAD_DELAY = 5  # 延迟下载
+DOWNLOAD_DELAY = 2  # 延迟下载
 BOT_NAME = 'guba'
 
 SPIDER_MODULES = ['guba.spiders']
@@ -79,13 +79,25 @@ PROXIES = [
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-#    # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#    # 'Accept-Language': 'en',
-#    'X-Crawlera-Cookies': 'disable'
+    # 'Accept': 'application/json, text/javascript, */*; q=0.01',
+    # 'Accept-Encoding': 'gzip, deflate, br',
+    # 'Accept-Language': 'zh-CN,zh;q=0.8',
+    # 'Cache-Control': 'max-age=0',
+    # 'Connection': 'keep-alive',
+    # 'Content-Length': '55',
+    # 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    # # 'Cookie': 'LGMOID=20161118201632-7AECCDB0BA501409E62AFEA8403EB279; user_trace_token=20161118201635-5bcca64725174f78b0b9c99e24a9b4af; LGUID=20161118201635-d937fc2f-ad88-11e6-b364-525400f775ce; index_location_city=%E5%85%A8%E5%9B%BD; JSESSIONID=D5935BB3E47293ED612631DF9EFE6040; _gat=1; PRE_UTM=; PRE_HOST=www.baidu.com; PRE_SITE=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DyGPqGmsCs2FdOLEsxSgIrYAnWuK1R03bw9X0LlXsoau%26wd%3D%26eqid%3De52a9a5d000162ec00000002583938a2; PRE_LAND=https%3A%2F%2Fwww.lagou.com%2F; TG-TRACK-CODE=index_navigation; Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1479472421,1480066055,1480145069,1480145217; Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1480145224; _ga=GA1.2.1114641428.1479471393; LGSID=20161126152433-6102796c-b3a9-11e6-b20a-5254005c3644; LGRID=20161126152709-bd995fd7-b3a9-11e6-b20a-5254005c3644; SEARCH_ID=04a6b755707e4918b1476c552cfe8694',
+    'Host': 'www.lagou.com',
+    'Origin': 'https://www.lagou.com',
+    # 'Referer': 'https://www.lagou.com/jobs/list_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91?px=default&city=%E5%8C%97%E4%BA%AC',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',
+    # 'X-Anit-Forge-Code': '0',
+    # 'X-Anit-Forge-Token': 'None',
+    # 'X-Requested-With': 'XMLHttpRequest',
     'Connection': 'Keep-Alive',
     'Accept': 'text/html, application/xhtml+xml, */*',
     'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    # 'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'
 }
 
 # Enable or disable spider middlewares
@@ -107,11 +119,11 @@ DEFAULT_REQUEST_HEADERS = {
 #
 # CRAWLERA_PRESERVE_DELAY = True
 #
-# DOWNLOADER_MIDDLEWARES = {
+DOWNLOADER_MIDDLEWARES = {
     # 'guba.middlewares.ProxyMiddleware': 543,
     # 'guba.middlewares.RandomUserAgent': 600,
-#   'scrapy_crawlera.CrawleraMiddleware': 600
-# }
+    #  'scrapy_crawlera.CrawleraMiddleware': 600
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -124,7 +136,8 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
     'guba.pipelines.GubaPipeline': 300,
     'guba.pipelines.LagouPipeline': 300,
-    'guba.pipelines.GubaYaowenPipeline': 300
+    'guba.pipelines.GubaYaowenPipeline': 300,
+    'guba.pipelines.LagouUrlPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

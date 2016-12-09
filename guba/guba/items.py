@@ -24,9 +24,21 @@ class PositionItem(scrapy.Item):
     result_json_str = scrapy.Field()
 
 
+class PositionDetailItem(scrapy.Item):
+    detail_dict = scrapy.Field()
+
+
 class NewsItem(scrapy.Item):
     title = scrapy.Field()
     pub_time = scrapy.Field()
     source = scrapy.Field()
     abstract = scrapy.Field()
     content = scrapy.Field()
+
+
+class UrlItem(scrapy.Item):
+    url = scrapy.Field()
+    page_size = scrapy.Field()
+    page_count = scrapy.Field()
+    kind = scrapy.Field()
+    city = scrapy.Field()
