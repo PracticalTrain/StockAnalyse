@@ -1,66 +1,19 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>要闻</title>
-	<link href="{% static 'news/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
-	<link href="{% static 'news/css/style.css' %}" rel='stylesheet' type='text/css' />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Blogname Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" 
-	/>
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!----webfonts
-		<link href='http://fonts.useso.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+	{% block title %}
+        要闻
+    {% endblock %}
 
-        <script src="http://ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        ---->
+    {% block meta %}
+{#        <meta name="viewport" content="width=device-width, initial-scale=1">#}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% endblock %}
 
-<script type="text/javascript" src="{% static 'news/js/move-top.js' %}"></script>
-<script type="text/javascript" src="{% static 'news/js/easing.js' %}"></script>
-<!--/script-->
-<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-				});
-			});
-</script>
-<!---->
+	 {% block link %}
 
-</head>
-<body>
-<!---strat-banner---->
-<div class="banner">				
-	 <div class="header">  
-		  <div class="container">
-
-			  <div class="logo">
-					<div><p>今日要闻</p></div>
-			 </div>
-			 <!---start-top-nav---->
-			 <div class="top-menu">
-				  <span class="menu"> </span>
-				   <ul>
-						<li class="active"><a href="index.html">主页</a></li>
-						<li><a href="contact.html">联系我们</a></li>
-						<li><a href="terms.html">TERMS</a></li>
-				   </ul>
-			 </div>
-			 <div class="clearfix"></div>
-					<script>
-					$("span.menu").click(function(){
-					$(".top-menu ul").slideToggle("slow" , function(){
-					});
-					});
-					</script>
-				<!---//End-top-nav---->					
-		 </div>
-	 </div>
-</div>
+        <link href="{% static 'news/css/style2.css' %}" rel='stylesheet' type='text/css' />
+    {% endblock %}
+{% block section_content %}
 <!---//End-banner---->
 <div class="content">
 	 <div class="container">
@@ -93,9 +46,9 @@
 						 <li><a href="#">Previous</a></li>
 						 <li><a href="#">Next</a></li>
 					 </ul>
-				 </div>				 
+				 </div>
 			 </div>
-			 
+
 			 <div class="col-md-4 content-main-right">
 				 <div class="search">
 						 <h3>搜索</h3>
@@ -109,20 +62,41 @@
 		 </div>
 	 </div>
 </div>
-<!---->
-<script type="text/javascript">
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+    <script type="text/javascript">
 		$(document).ready(function() {
 				/*
 				var defaults = {
 				containerID: 'toTop', // fading element id
 				containerHoverID: 'toTopHover', // fading element hover id
 				scrollSpeed: 1200,
-				easingType: 'linear' 
+				easingType: 'linear'
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
 </script>
-<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-</body>
-</html>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!----webfonts
+		<link href='http://fonts.useso.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+
+        <script src="http://ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        ---->
+
+<script type="text/javascript" src="{% static 'news/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'news/js/easing.js' %}"></script>
+    <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+{% endblock %}
+
+
