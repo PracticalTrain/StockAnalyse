@@ -34,37 +34,34 @@ ul,label{
 background:rgba(246, 197, 112, 0.34);
 height:80px;
 }
-.logo{
-	float: left;
-	margin-top: 1.3em;
-}
-.top-menu{
-	float:right;
-}
-.top-menu ul li{
-	float:left;
-	display: inline-block;
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
-}
-.top-menu ul li:nth-child(1){
-border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-.top-menu ul li a{
-	background:rgba(246, 197, 112, 0.34);
-	margin: 2em 2.5em;
-	display: block;
-	color: #54332A;
-	font-weight:400;
-	font-size:0.9em;
-	text-decoration:none;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;	
-}
-.top-menu ul li a:hover,.top-menu ul li.active a{
-color:#E82806;
-}
+
+/*.top-menu{*/
+	/*float:right;*/
+/*}*/
+/*.top-menu ul li{*/
+	/*float:left;*/
+	/*display: inline-block;*/
+	/*border-right: 1px solid rgba(255, 255, 255, 0.2);*/
+/*}*/
+/*.top-menu ul li:nth-child(1){*/
+/*border-left: 1px solid rgba(255, 255, 255, 0.2);*/
+/*}*/
+/*.top-menu ul li a{*/
+	/*background:rgba(246, 197, 112, 0.34);*/
+	/*margin: 2em 2.5em;*/
+	/*display: block;*/
+	/*color: #54332A;*/
+	/*font-weight:400;*/
+	/*font-size:0.9em;*/
+	/*text-decoration:none;*/
+	/*transition: 0.5s all;*/
+	/*-webkit-transition: 0.5s all;*/
+	/*-moz-transition: 0.5s all;*/
+	/*-o-transition: 0.5s all;	*/
+/*}*/
+/*.top-menu ul li a:hover,.top-menu ul li.active a{*/
+/*color:#E82806;*/
+/*}*/
 .banner-head{
 text-align:center;
 margin:5em 0;

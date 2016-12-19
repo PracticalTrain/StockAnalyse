@@ -48,12 +48,14 @@ class GubaSpider(Spider):
 class GubaYaowenSpider(Spider):
     name = 'gubayaowen'
     allowed_domains = ['guba.eastmoney.com', 'finance.eastmoney.com']
-    root_domain = 'http://guba.eastmoney.com'
     start_urls = [
         "http://finance.eastmoney.com/yaowen.html",
     ]
     done_urls = set()
     pipelines = ['GubaYaowenPipeline']
+
+    def start_requests(self):
+        yield self.make_requests_from_url(self.start_urls[0])
 
     def parse(self, response):
         artitile_list = response.xpath('//div[@id="artitileList1"]/ul/li[contains(@id, "newsTr")]')
@@ -68,7 +70,7 @@ class GubaYaowenSpider(Spider):
                     print '%s has been parsed' % url
                     continue
                 self.done_urls.add(url)
-                yield scrapy.Request(url, self.parse_news)
+                yield scrapy.Request(url, self.parse_news, dont_filter=True)
 
         for url in self.start_urls:
             yield scrapy.Request(url, self.parse, dont_filter=True)
@@ -86,7 +88,7 @@ class GubaYaowenSpider(Spider):
         item['pub_time'] = pub_time
         item['source'] = source
         item['abstract'] = abstract
-        item['content'] = content
+        item['content'] = content.replace('\r\n', '<br>')
         yield item
 
     def parse_company_detail(self, response):

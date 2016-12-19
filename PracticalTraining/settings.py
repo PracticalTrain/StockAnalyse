@@ -1,3 +1,4 @@
+# -*- encoding:utf-8 -*-
 """
 Django settings for PracticalTraining project.
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'lagou.apps.LagouConfig',
     'stock.apps.StockConfig',
     'news.apps.NewsConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
 ]
 
 ROOT_URLCONF = 'PracticalTraining.urls'

@@ -22,15 +22,13 @@
                  {% if news_list %}
                      {% for news in news_list %}
                          <div class="content-grid-sec">
-					    <div class="content-sec-info">
-							 <h3><a href="{% url 'news:detail' news.id %}">{{ news.title }}</a></h3>
-							 <h4>{{ news.pub_time }}, 来源 : {{ news.source }}</h4>
-							 <p>{{ news.abstract }}</p>
-							 <!-- -
-							 <a class="bttn" href="{% url 'news:detail' news.id %}">更多</a>
-							 --->
-					 </div>
-				 </div>
+                             <div class="content-sec-info">
+                                 <h3><a href="{% url 'news:detail' news.id %}">{{ news.title }}</a></h3>
+                                 <h4>{{ news.pub_time }}, 来源 : {{ news.source }}</h4>
+                                 <p>{{ news.abstract }}</p>
+                                 <a class="bttn" href="{% url 'news:detail' news.id %}">更多</a>
+                             </div>
+                         </div>
                      {% endfor %}
                  {% else %}
                     <p>哎呦喂，啥都没有</p>
@@ -43,8 +41,8 @@
 						 <li><a href="#">4</a></li>
 						 <li><a href="#">5</a></li>
 						 <li><a href="#">6</a></li>
-						 <li><a href="#">Previous</a></li>
-						 <li><a href="#">Next</a></li>
+						 <li><a href="#">{{ pages }}</a></li>
+						 <li><a href="#">下一页</a></li>
 					 </ul>
 				 </div>
 			 </div>

@@ -60,3 +60,13 @@ outline: none;
 width: 43px;
 height: 51px;
 }
+
+.content-grid-head h3 {
+font-size: 1em;
+}
+.content-main {
+padding: 16px;
+}
+.content-grid-head h4 {
+font-size: 0.83em;
+}
