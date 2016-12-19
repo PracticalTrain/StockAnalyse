@@ -35,14 +35,28 @@
                  {% endif %}
 				 <div class="pages">
 					 <ul>
-						 <li class="active"><a href="#">1</a></li>
-						 <li><a href="#">2</a></li>
-						 <li><a href="#">3</a></li>
-						 <li><a href="#">4</a></li>
-						 <li><a href="#">5</a></li>
-						 <li><a href="#">6</a></li>
-						 <li><a href="#">{{ pages }}</a></li>
-						 <li><a href="#">下一页</a></li>
+
+                         {% for p in page_range %}
+
+                             {% if p == curr_page %}
+                                 <li class="active"><a href="{% url 'news:page' p %}">{{ p }} </a></li>
+
+                             {% else %}
+                                 <li><a href="{% url 'news:page' p %}">{{ p }} </a></li>
+                             {% endif %}
+                         {% endfor %}
+                        {% if curr_page > 1 %}
+                            <li><a href="{% url 'news:page' curr_page|add:-1 %}">上一页</a></li>
+                        {% else %}
+                            <li><a href="{% url 'news:page' 1 %}">上一页</a></li>
+                        {% endif %}
+                        {% if curr_page < num_pages %}
+                            <li><a href="{% url 'news:page' curr_page|add:1 %}">下一页</a></li>
+                        {% else %}
+                            <li><a href="{% url 'news:page' curr_page %}">下一页</a></li>
+                        {% endif %}
+
+
 					 </ul>
 				 </div>
 			 </div>
