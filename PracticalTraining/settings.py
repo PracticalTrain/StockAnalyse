@@ -51,8 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-
 ]
 
 ROOT_URLCONF = 'PracticalTraining.urls'
@@ -84,8 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'stock_ana',
+        'HOST': '10.82.80.41',
         'USER': 'root',
-        'PASSWORD': '111111',
+        'PASSWORD': 'root',
         'PORT': 3306,
 
     }
