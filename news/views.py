@@ -29,7 +29,7 @@ def get_news_by_pages(request, page_num):
                                                'curr_page': page,
                                                'num_pages': paginator.num_pages})
 
-def detail(request, news_id):
 
+def detail(request, news_id):
     news = get_object_or_404(News, pk=news_id)
     return render(request, 'news/detail.html', {'news': news})

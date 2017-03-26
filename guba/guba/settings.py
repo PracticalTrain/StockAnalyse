@@ -16,7 +16,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'PracticalTraining.settings'
 django.setup()
 
 COOKIES_ENABLED = False  # 禁用cookies
-DOWNLOAD_DELAY = 2  # 延迟下载
+DOWNLOAD_DELAY = 30  # 延迟下载
 BOT_NAME = 'guba'
 
 SPIDER_MODULES = ['guba.spiders']

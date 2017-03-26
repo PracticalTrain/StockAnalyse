@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'lagou.apps.LagouConfig',
     'stock.apps.StockConfig',
     'news.apps.NewsConfig',
+    'history.apps.HistoryConfig'
 
 ]
 

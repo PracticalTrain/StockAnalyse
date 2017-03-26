@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    股票历史
+{% endblock %}
+{% block meta %}
+    {#        <meta name="viewport" content="width=device-width, initial-scale=1">#}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{% endblock %}
+{% block link %}
+
+        <link href="{% static 'news/css/style2.css' %}" rel='stylesheet' type='text/css' />
+{% endblock %}
+{% block section_content %}
+    <div class="container">
+		 <div class="content-grids">
+            <div class="col-md-12 content-main">
+                <iframe src=https://gupiao.baidu.com/stock/sh600036.html scrolling="no" name="t" align="center"  frameborder="0" width=1000 height=3000></iframe>
+            </div>
+         </div>
+    </div>
+{% endblock %}

@@ -86,7 +86,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li><a href='{% url 'news:page' 1 %}'><i class="fa fa-circle-o text-red"></i> <span>要闻</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>股票历史数据</span></a></li>
+        <li><a href="{% url 'history:detail' %}"><i class="fa fa-circle-o text-yellow"></i> <span>股票历史数据</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>股票走势预测</span></a></li>
       </ul>
     </section>
@@ -134,7 +134,8 @@
 <!-- jQuery Knob Chart -->
 <script src="{% static 'plugins/knob/jquery.knob.js' %}"></script>
 <!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<!-- https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js -->
+<script src="{% static 'plugins/daterangepicker/moment.min.js' %}"></script>
 <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
 <!-- datepicker -->
 <script src="{% static 'plugins/datepicker/bootstrap-datepicker.js' %}"></script>

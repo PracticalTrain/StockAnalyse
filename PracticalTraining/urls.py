@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^index/$', index),
     # url(r'^admin/', admin.site.urls),
     url(r'^news/', include('news.urls')),
+    url(r'^hist/', include('history.urls')),
 ]
